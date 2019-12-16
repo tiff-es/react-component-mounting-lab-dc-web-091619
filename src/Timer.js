@@ -6,6 +6,13 @@ class Timer extends Component {
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
 
+  componentDidMount() {this.interval = setInterval(this.clockTick, 1000  )
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
   // add your code here
 
   render() {
@@ -18,9 +25,14 @@ class Timer extends Component {
         <small onClick={this.handleClose}>X</small>
       </section>
     );
-  }
+  };
+
+
+
 
   //clock functions
+
+
   clockTick = () => {
     this.setState(prevState => ({
       time: prevState.time + 1
